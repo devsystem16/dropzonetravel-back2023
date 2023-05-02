@@ -1,0 +1,13 @@
+RewriteEngine on
+
+# serve existing files in the /public folder as if they were in /
+
+RewriteCond %{DOCUMENT_ROOT}public%{REQUEST_URI} -f
+RewriteRule (.+) /public/$1 [L]
+
+# route everything else to /public/index.php
+
+RewriteRule ^ /public/index.php [L]
+
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
