@@ -19,6 +19,14 @@ class DetallesReservas extends Model
         return $this->belongsTo(Clientes::class,  'cliente_id');
     }
 
+
+    public function reservas()
+    {
+        return $this->belongsTo(Reservas::class,  'reserva_id');
+    }
+
+
+
     public function CostoTour()
     {
         return $this->belongsTo(CostoTour::class,  'costo_tour_id');

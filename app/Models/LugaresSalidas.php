@@ -13,4 +13,11 @@ class LugaresSalidas extends Model
     protected $table = 'lugares_salidas';
     protected $dates = ['deleted_at'];
     protected $fillable = ['descripcion', 'estado'];
+
+
+
+    public function LugarSalidaTour()
+    {
+        return $this->hasMany(LugarSalidaTour::class, 'lugar_salida_id', 'id');
+    }
 }

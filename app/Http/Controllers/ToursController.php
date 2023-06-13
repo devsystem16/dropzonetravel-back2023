@@ -29,6 +29,8 @@ class ToursController extends Controller
             return false;
         };
     }
+
+
     public function actualizarPrecioTour($programacionFechaId,  Request $request)
     {
         try {

@@ -45,6 +45,9 @@ Route::resource('lugaressalidas', LugaresSalidasController::class);
 
 Route::get('/lugar-salida-tour/obtener/{tour_id}',  [LugarSalidaTourController::class, 'obtenerLugarSalidaTour']);
 
+Route::post('/lugar-salida-tour/eliminar',  [LugarSalidaTourController::class, 'eliminarLugarSalida']);
+Route::post('/lugar-salida-tour/eliminar-forzado',  [LugarSalidaTourController::class, 'eliminarLugarSalidaForzado']);
+
 
 Route::resource('tour', ToursController::class);
 Route::post('/tour/listado/tabla/',  [ToursController::class, 'listado']);
@@ -62,6 +65,7 @@ Route::post('/tour/add-fecha-salida/id/{idTour}',  [ToursController::class, 'añ
 Route::post('/tour/actualizar/{id}',  [ToursController::class, 'actualizarTour']);
 
 Route::post('/tour/actualizar-precio/{programacionFechaId}',  [ToursController::class, 'actualizarPrecioTour']);
+
 
 
 Route::resource('cliente', ClientesController::class);

@@ -18,4 +18,14 @@ class LugarSalidaTour extends Model
     {
         return $this->belongsTo(LugaresSalidas::class,  'lugar_salida_id');
     }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reservas::class, 'lugar_salida_tours_id', 'id');
+    }
+
+    public function detallesReservas()
+    {
+        return $this->hasMany(DetallesReservas::class, 'lugar_salida_tours_id', 'id');
+    }
 }

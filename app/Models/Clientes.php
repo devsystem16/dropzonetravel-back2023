@@ -20,4 +20,14 @@ class Clientes extends Model
     {
         return $this->belongsTo(Nacionalidad::class,  'nacionalidad_id');
     }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reservas::class, 'cliente_id', 'id');
+    }
+
+    public function detallesReservas()
+    {
+        return $this->hasMany(DetallesReservas::class, 'cliente_id', 'id');
+    }
 }
