@@ -66,7 +66,7 @@ class ReservasController extends Controller
 
 
 
-
+            $sumaAbonos =   Abonos::where("reserva_id", "=", $reserva_id)->sum("valor") ?? 0;
 
             // 1 Cliente
             $dbo_cliente =  Clientes::where("id", "=",  $cliente["id"])->first();
@@ -78,6 +78,21 @@ class ReservasController extends Controller
 
 
             $valorClienteTitular  = $cliente["tipoCliente"]["precio"];
+
+            // modificacion del TipoCliente principal.
+
+            if (isset($cliente["tipoCliente"]["id"])) {
+                $detalleReservaTitular = DetallesReservas::where("reserva_id", "=", $reserva_id)
+                    ->where("cliente_id", "=", $cliente["id"])
+                    ->first();
+                $detalleReservaTitular->precio = $cliente["tipoCliente"]["precio"];
+                $detalleReservaTitular->costo_tour_id = $cliente["tipoCliente"]["id"];
+                $detalleReservaTitular->save();
+            }
+
+            //FIN modificacion del TipoCliente principal.
+
+
 
             $valorAcompañantes = 0;
             foreach ($acompaniantesRequest as $acompa) {
